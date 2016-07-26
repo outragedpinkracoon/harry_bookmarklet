@@ -1,5 +1,7 @@
 javascript: (function () { 
 
+  var possibleSubs = ["Harry Potter and the", "The Tale of", "Fellowship of the"]
+
   var headers = document.getElementsByTagName('h1');
   var tags =  Array.prototype.slice.call( headers, 0 );
 
@@ -26,7 +28,8 @@ javascript: (function () {
       var text = item.innerText;
     }
 
-    item.innerText = 'Harry Potter and the ' + text;
+    var sub = possibleSubs[Math.floor(Math.random()*possibleSubs.length)];
+    item.innerText = sub + ' ' + text;
   }
 
 }());
