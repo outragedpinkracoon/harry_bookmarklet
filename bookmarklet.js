@@ -1,6 +1,6 @@
 javascript: (function () { 
 
-  var possibleSubs = ["Harry Potter and the", "The Tale of", "Fellowship of the"]
+  var possibleSubs = ["Harry Potter and the", "Fellowship of the"]
 
   var headers = document.getElementsByTagName('h1');
   var tags =  Array.prototype.slice.call( headers, 0 );
