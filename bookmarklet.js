@@ -1,18 +1,21 @@
 javascript: (function () { 
-  run();
-  
-  function run(){
-    tags = findHeaders();
 
-    var validElements = filter(tags);
-    
-    if(validElements.length == 0) return;
+  var headers = document.getElementsByTagName('h1');
+  var tags =  Array.prototype.slice.call( headers, 0 );
 
-    setText(validElements);
-  
-  }
+  var validElements = tags.filter(function(item){ 
+    var children = item.children;
+    if(item.children.length == 0) {
+      return true;
+    }
+    var first = item.children[0];
+    if(first.tagName === 'A') {
+      return true;
+    }
+  })
 
-  function setText(validElements){
+  if(validElements.length > 0) {
+
     var h1 = validElements[0];
 
     var item = h1;
@@ -26,22 +29,4 @@ javascript: (function () {
     item.innerText = 'Harry Potter and the ' + text;
   }
 
-  function findHeaders(){
-    var headers = document.getElementsByTagName('h1');
-    return Array.prototype.slice.call( headers, 0 );
-  }
-
-  function filter(items){
-    var valid = items.filter(function(item){ 
-      var children = item.children;
-      if(item.children.length == 0) {
-        return true;
-      }
-      var first = item.children[0];
-      if(first.tagName === 'A') {
-        return true;
-      }
-    })
-    return valid;
-  }
- }());
+}());
